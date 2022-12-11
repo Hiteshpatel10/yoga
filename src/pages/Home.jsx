@@ -1,19 +1,20 @@
 import React from 'react'
 import supabase from "../config/SupabaseClient";
 import {useEffect, useState} from 'react'
+import CustomerData from '../components/CustomerData'
+import { useNavigate } from 'react-router-dom';
 
 
 function Home() {
 
     const [fetchError, setFetchError] = useState(null); 
     const [data, setData] = useState(null);
+    let navigate = useNavigate();
 
-    const sql = `
-        SELECT *
-        FROM user 
-        JOIN subscription orders ON user.id = subscription.id
-        `;
-    
+  function handleClick() {
+    navigate('/addCustomer');
+  };
+
     useEffect(()=> {
         const fetchData = async () => {
             const {data, error} = await supabase
@@ -36,19 +37,37 @@ function Home() {
     },[])
 
   return (
-    <div className="home">
-        <p>data</p>
+    <div className="container p-5">
+        <button className="btn btn-primary btn-fab"  onClick={handleClick}> Add Customer </button>
+        <p className="pt-4 text-success font-weight-bold">CUSTOMER DATA</p>
         {fetchError && (<p>fetchError</p>)}
 
-        {console.log(data)}
+        <div class="row w-100">
+        <div class="col-sm">
+            id
+        </div>
+        <div class="col-sm">
+            Name
+        </div>
+        <div class="col-sm">
+            contact no
+        </div>
+        <div class="col-sm">
+            data of birth
+        </div>
+        <div class="col-sm">
+            enrolled
+        </div>
+
+    </div>
         {data && (
             <div>
                 {data.map(item => (
-                    <p>{item.is_paid}</p>
+                    <CustomerData data={item} key={item.id}/>
                 ))}
             </div>
         )}
-        
+      
     </div>
   )
 }
