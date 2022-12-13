@@ -1,7 +1,9 @@
 import './App.css';
 import Home from './pages/Home';
-import UserDetails from './pages/UserDetails';
+import UserDetailsFormPage from './pages/UserDetailsFormPage';
 import UserSubscription from './pages/UserSubscription';
+import ClientDetailsPage from './pages/ClientDetailsPage'
+
 import {
   BrowserRouter,
   Routes,
@@ -13,9 +15,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/addCustomer" element={<UserDetails />} />
-        <Route path="/" element={<UserSubscription />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/add-customer" element={<UserDetailsFormPage />} />
+        <Route path="/user-subscription" element={<UserSubscription />} />
+        <Route path="/client-details/:id" element={<ClientDetailsPage />} />
       </Routes>
     </BrowserRouter>
     </div>

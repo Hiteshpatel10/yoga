@@ -1,21 +1,28 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function CustomerSubscription({data}) {
+
+  let navigate = useNavigate();
+
+  function handleClick() {
+    navigate('/user-subscription');
+  };
 
     {console.log(data)}
     if (data) {
         if (data.is_enrolled) {
           return (
-            <div className='p-1'>True</div>
+            <button className='btn btn-success'>Active</button>
           );
         } else {
           return  (
-              <button className='btn btn-primary'>Enroll</button>
+              <button className='btn btn-danger' onClick={handleClick}>Enroll</button>
           );
         }
       } else {
         return  (
-          <button className='btn btn-primary'>Enroll</button>
+          <button className='btn btn-danger' onClick={handleClick}>Enroll</button>
           );
       }
 }

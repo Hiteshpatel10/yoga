@@ -12,7 +12,7 @@ function Home() {
     let navigate = useNavigate();
 
   function handleClick() {
-    navigate('/addCustomer');
+    navigate('/add-customer');
   };
 
     useEffect(()=> {

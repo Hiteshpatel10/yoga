@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import supabase from "../config/SupabaseClient";
 import { useEffect, useState } from "react";
 
-function UserDetails() {
+function UserDetailsFormPage() {
 	const [firstName, setFirstName] = useState();
 	const [lastName, setLastName] = useState();
 	const [contactNo, setContactNo] = useState();
@@ -97,4 +97,4 @@ function UserDetails() {
 	);
 }
 
-export default UserDetails;
+export default UserDetailsFormPage;
