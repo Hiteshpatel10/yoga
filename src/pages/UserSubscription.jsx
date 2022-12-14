@@ -14,7 +14,7 @@ function UserSubscription() {
 	const [fee, setFees] = useState();
 	const [formError, setFormError] = useState(null);
 	const [isPaymentBoxVisible, setIsPaymentBoxVisible] = useState(false);
-	
+
 	const paymentHandler = async () => {
 
 		const { data, error } = await supabase.from("subscription").upsert([

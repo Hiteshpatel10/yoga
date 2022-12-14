@@ -9,6 +9,8 @@ function Home() {
 
     const [fetchError, setFetchError] = useState(null); 
     const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
     let navigate = useNavigate();
 
   function handleClick() {
@@ -23,11 +25,13 @@ function Home() {
 
             if(error){
                 setFetchError("Error 404")
+                setIsLoading(false)
                 setData(null)
             }
 
             if(data){
                 setData(data)
+                setIsLoading(false);
                 setFetchError(null)
             }
         }
@@ -59,7 +63,9 @@ function Home() {
         </div>
 
     </div>
-        {data && (
+
+        {isLoading && (<div className='card w-25 p-4 mx-auto mt-4'>Loading ...</div>)}
+        { data && (
             <div>
                 {data.map(item => (
                     <CustomerData data={item} key={item.id}/>
