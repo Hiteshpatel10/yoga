@@ -36,7 +36,7 @@ function ClientDetailsPage() {
 			}
 		};
 		fetchData();
-	}, []);
+	}, [params.id]);
 
 	return (
 		<div className="container-fluid card shadow-sm w-25 py-2 mt-5 mb-2 mx-auto">
