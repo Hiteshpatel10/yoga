@@ -100,7 +100,8 @@ function PaymentPage() {
 													<img
 														src="https://i.imgur.com/2ISgYja.png"
 														width="30"
-														alt="icons
+														alt="icon"
+
 													/>
 												</div>
 											</div>
@@ -176,7 +177,6 @@ function PaymentPage() {
 								<span>
 									Pro(Billed Monthly) <i class="fa fa-caret-down"></i>
 								</span>
-								
 							</div>
 
 							<div class="mt-1">
@@ -218,7 +218,7 @@ function PaymentPage() {
 								Try it free for 30 days
 							</button>
 							<div class="text-center">
-								Flex Yoga
+								Enjoy the sessions
 							</div>
 						</div>
 					</div>
