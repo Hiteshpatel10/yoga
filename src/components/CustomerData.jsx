@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomerSubscription from './CustomerSubscription';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function CustomerData(props) {
 

@@ -1,9 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import supabase from "../config/SupabaseClient";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import PaymentPage from "../components/PaymentPage";
 
 function UserSubscription() {
@@ -29,6 +28,10 @@ function UserSubscription() {
 
 		if (error) {
 			setFormError(error.message);
+		}
+
+		if(data){
+			setFormError(null);
 		}
 
 		setIsPaymentBoxVisible(false)

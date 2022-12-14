@@ -1,11 +1,9 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
 import { ReactDialogBox } from "react-js-dialog-box";
 import "react-js-dialog-box/dist/index.css";
 
 
 function PaymentPage({ visibilityHandler, paymentStatus}) {
-	let navigate = useNavigate();
 	
 	const handlePayment = async () => {
 		paymentStatus();
@@ -44,6 +42,7 @@ function PaymentPage({ visibilityHandler, paymentStatus}) {
 													<img
 														src="https://i.imgur.com/7kQEsHU.png"
 														width="30"
+														alt="icon"
 													/>
 												</div>
 											</button>
@@ -79,18 +78,22 @@ function PaymentPage({ visibilityHandler, paymentStatus}) {
 														<img
 															src="https://i.imgur.com/2ISgYja.png"
 															width="30"
+															alt="icon"
 														/>
 														<img
 															src="https://i.imgur.com/W1vtnOV.png"
 															width="30"
+															alt="icon"
 														/>
 														<img
 															src="https://i.imgur.com/35tC99g.png"
 															width="30"
+															alt="icon"
 														/>
 														<img
 															src="https://i.imgur.com/2ISgYja.png"
 															width="30"
+															alt="icon"
 														/>
 													</div>
 												</div>
@@ -206,9 +209,6 @@ function PaymentPage({ visibilityHandler, paymentStatus}) {
 									onClick={handlePayment}>
 									Enroll in class
 								</button>
-								<div class="text-center">
-									<a href="#">Have a promo code?</a>
-								</div>
 							</div>
 						</div>
 					</div>

@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import supabase from "../config/SupabaseClient";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SubscriptionDialogBox from "../components/SubscriptionDialogBox";
 
 function UserDetailsFormPage() {
