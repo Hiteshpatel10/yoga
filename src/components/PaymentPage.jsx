@@ -50,7 +50,7 @@ function PaymentPage() {
 											aria-controls="collapseTwo">
 											<div class="d-flex align-items-center justify-content-between">
 												<span>Paypal</span>
-												<img src="https://i.imgur.com/7kQEsHU.png" width="30" />
+												<img src="https://i.imgur.com/7kQEsHU.png" width="30" alt="icons" />
 											</div>
 										</button>
 									</h2>
@@ -85,18 +85,22 @@ function PaymentPage() {
 													<img
 														src="https://i.imgur.com/2ISgYja.png"
 														width="30"
+														alt="icons"
 													/>
 													<img
 														src="https://i.imgur.com/W1vtnOV.png"
 														width="30"
+														alt="icons"
 													/>
 													<img
 														src="https://i.imgur.com/35tC99g.png"
 														width="30"
+														alt="icons"
 													/>
 													<img
 														src="https://i.imgur.com/2ISgYja.png"
 														width="30"
+														alt="icons
 													/>
 												</div>
 											</div>
@@ -172,9 +176,7 @@ function PaymentPage() {
 								<span>
 									Pro(Billed Monthly) <i class="fa fa-caret-down"></i>
 								</span>
-								<a href="#" class="billing">
-									Save 20% with annual billing
-								</a>
+								
 							</div>
 
 							<div class="mt-1">
@@ -216,7 +218,7 @@ function PaymentPage() {
 								Try it free for 30 days
 							</button>
 							<div class="text-center">
-								<a href="#">Have a promo code?</a>
+								Flex Yoga
 							</div>
 						</div>
 					</div>
