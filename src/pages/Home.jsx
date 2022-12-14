@@ -12,7 +12,7 @@ function Home() {
     let navigate = useNavigate();
 
   function handleClick() {
-    navigate('/addCustomer');
+    navigate('/add-customer');
   };
 
     useEffect(()=> {
@@ -23,7 +23,6 @@ function Home() {
 
             if(error){
                 setFetchError("Error 404")
-                console.log(error);
                 setData(null)
             }
 
