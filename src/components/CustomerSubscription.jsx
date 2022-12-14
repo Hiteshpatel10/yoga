@@ -9,7 +9,6 @@ function CustomerSubscription({id, data}) {
     navigate('/user-subscription/' + id);
   };
 
-    {console.log(data)}
     if (data) {
         if (data.is_enrolled) {
           return (

@@ -4,6 +4,7 @@ import supabase from "../config/SupabaseClient";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
+import PaymentPage from "../components/PaymentPage";
 
 function UserSubscription() {
 	const params = useParams();
@@ -13,6 +14,31 @@ function UserSubscription() {
 	const [batch, setBatch] = useState("6-7AM");
 	const [fee, setFees] = useState();
 	const [formError, setFormError] = useState(null);
+	const [isPaymentBoxVisible, setIsPaymentBoxVisible] = useState(false);
+	
+	const paymentHandler = async () => {
+
+		const { data, error } = await supabase.from("subscription").upsert([
+			{
+				id: params.id,
+				is_enrolled: true,
+				batch: params.batch,
+				fee: params.fee,
+			},
+		]);
+
+		if (error) {
+			setFormError(error.message);
+		}
+
+		setIsPaymentBoxVisible(false)
+		navigate('/');
+
+	}
+
+	const paymentBoxVisible = () => {
+		setIsPaymentBoxVisible(false)
+	}
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -22,21 +48,7 @@ function UserSubscription() {
 			return;
 		}
 
-		const { data, error } = await supabase.from("subscription").upsert([
-			{
-				id: id,
-				is_enrolled: true,
-				batch: batch,
-				fee: fee,
-			},
-		]);
-
-		if (error) {
-			console.log(error);
-			setFormError(error.message);
-		}
-
-		navigate(`/payment-details/${id}/${fee}/${batch}/`);
+		setIsPaymentBoxVisible(true);
 	};
 
 	return (
@@ -69,6 +81,8 @@ function UserSubscription() {
 				</Form.Group>
 
 				{formError && <p>{formError}</p>}
+
+				{isPaymentBoxVisible && <PaymentPage  visibilityHandler={paymentBoxVisible} paymentStatus={paymentHandler} />}
 
 				<Button variant="primary" type="submit">
 					Submit
