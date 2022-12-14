@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function ClientDetailsPage() {
+    
 	const params = useParams();
 	const [fetchError, setFetchError] = useState(null);
 	const [data, setData] = useState(null);
@@ -12,7 +13,7 @@ function ClientDetailsPage() {
 	let navigate = useNavigate();
 
 	function navigateToSubscription() {
-		navigate("/user-subscription");
+		navigate("/user-subscription/" + params.id);
 	}
 
 	useEffect(() => {
@@ -24,7 +25,6 @@ function ClientDetailsPage() {
 
 			if (error) {
 				setFetchError("Error 404");
-				console.log(error);
 				setData(null);
 				setIsLoading(false);
 			}
@@ -37,8 +37,6 @@ function ClientDetailsPage() {
 		};
 		fetchData();
 	}, []);
-
-	console.log(data);
 
 	return (
 		<div className="container-fluid card shadow-sm w-25 py-2 mt-5 mb-2 mx-auto">

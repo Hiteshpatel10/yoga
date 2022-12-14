@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import supabase from "../config/SupabaseClient";
 import { useEffect, useState } from "react";
+import SubscriptionDialogBox from "../components/SubscriptionDialogBox";
 
 function UserDetailsFormPage() {
 	const [firstName, setFirstName] = useState();
@@ -9,16 +10,36 @@ function UserDetailsFormPage() {
 	const [contactNo, setContactNo] = useState();
 	const [dob, setDob] = useState();
 	const [formError, setFormError] = useState(null);
+	const [id, setId] = useState();
+	const [isDialogBoxVisible, setIsDialogBoxVisible] = useState(false);
 
-	const handleSubmit = async (event) => {
+	function setDialogBoxVisibility() {
+		setIsDialogBoxVisible(false);
+	}
+
+	const validateForm = async (event) => {
 		event.preventDefault();
-
 		if (!firstName || !lastName || !contactNo || !dob) {
 			setFormError("Please Fill All the details");
 			return;
 		}
 
-		const { data, error } = await supabase
+		const { data, error } = await insertData();
+
+		if (error) {
+			setFormError(error.message);
+		}
+
+		if (data) {
+			console.log(data);
+			setIsDialogBoxVisible(true);
+			setId(data[0].id);
+			setFormError(null);
+		}
+	};
+
+	const insertData = async () => {
+		const result = await supabase
 			.from("user")
 			.insert([
 				{
@@ -27,22 +48,15 @@ function UserDetailsFormPage() {
 					contact_no: contactNo,
 					date_of_birth: dob,
 				},
-			]);
+			])
+			.select();
 
-		if (error) {
-			console.log(error);
-			setFormError(error.message);
-		}
-
-		if (data) {
-			console.log(data);
-			setFormError(null);
-		}
+		return result;
 	};
 
 	return (
 		<div className="container-fluid w-50 card shadow-lg p-4 m-5 mx-auto">
-			<Form onSubmit={handleSubmit}>
+			<Form onSubmit={validateForm}>
 				<Form.Group className="mb-3" controlId="first_name">
 					<Form.Label>First Name</Form.Label>
 					<Form.Control
@@ -87,8 +101,14 @@ function UserDetailsFormPage() {
 					/>
 				</Form.Group>
 
-				{formError && <p>{formError}</p>}
+				{formError && <p className="text-danger">{formError}</p>}
 
+				{isDialogBoxVisible && (
+					<SubscriptionDialogBox
+						visibilityHandler={setDialogBoxVisibility}
+						id={id}
+					/>
+				)}
 				<Button variant="primary" type="submit">
 					Submit
 				</Button>

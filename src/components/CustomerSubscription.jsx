@@ -1,12 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function CustomerSubscription({data}) {
+function CustomerSubscription({id, data}) {
 
   let navigate = useNavigate();
 
   function handleClick() {
-    navigate('/user-subscription');
+    navigate('/user-subscription/' + id);
   };
 
     {console.log(data)}

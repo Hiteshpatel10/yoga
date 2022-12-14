@@ -30,7 +30,7 @@ function CustomerData(props) {
             {data.date_of_birth}
         </div>
         <div className="col-sm text-info">
-            <CustomerSubscription data={subscription} keys={data.id}/>
+            <CustomerSubscription id={data.id} data={subscription} keys={data.id}/>
         </div>
     </div>
 </div>
